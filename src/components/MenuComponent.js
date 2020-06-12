@@ -3,14 +3,14 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import DishdetailComponent from './DishdetailComponent';
 //import { connect } from 'react-redux';
 
-const Menu = ({ dishes }) => {
+const Menu = (props) => {
   const [selectedDish, setSelectedDish] = useState(null);
 
   const onDishSelect = (dish) => {
     setSelectedDish(dish);
   };
 
-  const menu = dishes.map((dish) => {
+  const menu = props.dishes.map((dish) => {
     return (
       <div className="col-12 col-md-5 m-1">
         <Card key={dish.id} onClick={() => onDishSelect(dish)}>
@@ -27,7 +27,7 @@ const Menu = ({ dishes }) => {
     <div className="container">
       <div className="row">{menu}</div>
       {/* <div className="col-12 col-md-5 m-1">{renderDish(selectedDish)}</div> */}
-      <DishdetailComponent dish={dishes} />
+      <DishdetailComponent dish={selectedDish} />
     </div>
   );
 };
